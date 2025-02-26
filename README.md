@@ -1,0 +1,1 @@
+This is the project I've done in college on subject "Web application development" that was direct continuation on subject "Basics of web technologies". Backend is made in NodeJS, TypeScript and frontend in Angular.
