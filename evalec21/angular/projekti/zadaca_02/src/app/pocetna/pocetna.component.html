@@ -1,0 +1,37 @@
+<div class="container" *ngIf="korisnik != null">
+  <h2>Moji podaci</h2>
+  <div class="user-info">
+    <p>
+      <strong>Korisničko ime:</strong>
+      <span id="korimeSpan">{{ korisnik.korime }}</span>
+    </p>
+    <p>
+      <strong>Email:</strong> <span id="emailSpan">{{ korisnik.email }}</span>
+    </p>
+    <p>
+      <strong>Ime:</strong> <span id="imeSpan">{{ korisnik.ime }}</span>
+    </p>
+    <p>
+      <strong>Prezime:</strong>
+      <span id="prezimeSpan">{{ korisnik.prezime }}</span>
+    </p>
+    <p>
+      <strong>Pristup zatražen:</strong>
+      <span id="statusSpan">{{
+        korisnik.zatrazio_pristup == 1 ? "Da" : "Ne"
+      }}</span>
+    </p>
+    <p>
+      <strong>Ima pristup:</strong>
+      <span id="statusSpan">{{ korisnik.ima_pristup == 1 ? "Da" : "Ne" }}</span>
+    </p>
+  </div>
+  <button
+    id="zahtjevPristupa"
+    class="action-button"
+    *ngIf="korisnik.ima_pristup != 1 && korisnik.zatrazio_pristup != 1"
+    (click)="zatraziPrisutp()"
+  >
+    Pošalji zahtjev za pristup servisu
+  </button>
+</div>

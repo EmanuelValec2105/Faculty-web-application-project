@@ -1,0 +1,16 @@
+{
+  "routes": {
+    "/": {},
+    "/detalji": {},
+    "/dodavanje": {},
+    "/dokumentacija": {},
+    "/filmovi": {},
+    "/korisnici": {},
+    "/osobe": {},
+    "/pocetna": {},
+    "/prijava": {},
+    "/prijava-totp": {},
+    "/registracija": {},
+    "/totp": {}
+  }
+}

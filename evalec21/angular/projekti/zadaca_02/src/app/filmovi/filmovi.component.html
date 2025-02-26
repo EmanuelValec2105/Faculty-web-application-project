@@ -1,0 +1,45 @@
+<div class="filmovi-container">
+  <p *ngIf="filmovi.length == 0">Nema dostupnih filmova</p>
+  <div class="film-card" *ngFor="let film of filmovi">
+    <img
+      class="poster"
+      [src]="'https://image.tmdb.org/t/p/w300' + film.poster"
+      alt="{{ film.naslov }}"
+    />
+    <div class="details">
+      <h3 class="title">{{ film.naslov }}</h3>
+      <p class="original-title">
+        <strong>Originalni naslov:</strong> {{ film.originalni_naslov }}
+      </p>
+      <p class="release-date">
+        <strong>Datum izdavanja:</strong>
+        {{ film.datum_izdanja || "Nepoznato" }}
+      </p>
+      <p class="language">
+        <strong>Jezik:</strong> {{ film.jezik || "Nepoznato" }}
+      </p>
+      <p class="popularity">
+        <strong>Popularnost:</strong>
+        {{ film.popularnost ? film.popularnost.toFixed(2) : "Nepoznato" }}
+      </p>
+      <p class="description">
+        <strong>Opis:</strong> {{ film.opis || "Opis nije dostupan" }}
+      </p>
+    </div>
+  </div>
+</div>
+<div class="pagination">
+  <button
+    [disabled]="trenutnaStranica === 1"
+    (click)="promjeniStranicu(trenutnaStranica - 1)"
+  >
+    &laquo; Predhodna
+  </button>
+
+  <button
+    (click)="promjeniStranicu(trenutnaStranica + 1)"
+    [disabled]="filmovi.length == 0"
+  >
+    Sljedeća &raquo;
+  </button>
+</div>

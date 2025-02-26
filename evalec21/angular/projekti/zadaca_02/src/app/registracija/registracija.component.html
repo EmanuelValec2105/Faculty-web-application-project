@@ -1,0 +1,45 @@
+<div class="auth-container">
+  <h2>Registracija</h2>
+  <form id="registrationForm">
+    <div class="form-group">
+      <label for="email">Email: *</label>
+      <input type="email" id="email" name="email" required #email />
+    </div>
+    <div class="form-group">
+      <label for="korime">Korisničko ime: *</label>
+      <input type="text" id="korime" name="korime" required #korime />
+    </div>
+    <div class="form-group">
+      <label for="lozinka">Lozinka: *</label>
+      <input type="password" id="lozinka" name="lozinka" required #lozinka />
+    </div>
+    <div class="form-group">
+      <label for="ime">Ime:</label>
+      <input type="text" id="ime" name="ime" #ime />
+    </div>
+    <div class="form-group">
+      <label for="prezime">Prezime:</label>
+      <input type="text" id="prezime" name="prezime" #prezime />
+    </div>
+    <div class="form-group">
+      <label for="adresa">Adresa:</label>
+      <input type="text" id="adresa" name="adresa" #adresa />
+    </div>
+    <button
+      type="button"
+      (click)="
+        registracija(
+          email.value,
+          korime.value,
+          lozinka.value,
+          ime.value,
+          prezime.value,
+          adresa.value
+        )
+      "
+    >
+      Registriraj se
+    </button>
+  </form>
+  <p>Već imate račun? <a routerLink="/prijava">Prijavite se</a></p>
+</div>

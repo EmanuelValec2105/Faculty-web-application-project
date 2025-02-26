@@ -1,0 +1,26 @@
+<nav class="main-nav">
+  <div class="nav-links">
+    <a *ngIf="jePrijavljen" routerLink="pocetna">Početna</a>
+    <a *ngIf="jePrijavljen" routerLink="osobe">Osobe</a>
+    <a *ngIf="jePrijavljen" routerLink="filmovi">Filmovi</a>
+    <a *ngIf="jePrijavljen" routerLink="totp">Totp</a>
+    <a *ngIf="jeAdmin" routerLink="dodavanje">Dodavanje</a>
+    <a *ngIf="jeAdmin" routerLink="korisnici">Korisnici</a>
+  </div>
+  <button
+    *ngIf="jePrijavljen"
+    class="nav-button"
+    type="button"
+    (click)="odjava()"
+  >
+    Odjava
+  </button>
+  <button
+    *ngIf="!jePrijavljen"
+    class="nav-button"
+    type="button"
+    routerLink="/prijava"
+  >
+    Prijava
+  </button>
+</nav>

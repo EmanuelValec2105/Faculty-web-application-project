@@ -1,0 +1,14 @@
+<p>Totp {{ totpAktivan == 1 ? "je aktivan" : "nije aktivan" }}</p>
+<p *ngIf="totpAktivan == 1">Tajni kljuc {{ totpTajna }}</p>
+<qrcode
+  *ngIf="totpAktivan == 1"
+  [qrdata]="
+    'otpauth://totp/totp:none?secret=' +
+    totpTajna +
+    '%3D&period=60&digits=6&issuer=evalec&algorithm=SHA512'
+  "
+  [width]="256"
+  [errorCorrectionLevel]="'M'"
+></qrcode>
+<button *ngIf="totpAktivan == 1" (click)="deaktiviraj()">Deaktiviraj</button>
+<button *ngIf="totpAktivan != 1" (click)="aktiviraj()">Aktiviraj</button>

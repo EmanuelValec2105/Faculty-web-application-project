@@ -1,0 +1,9 @@
+<div class="auth-container">
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="totp">TOTP:</label>
+      <input type="text" id="totp" name="totp" required #totp />
+    </div>
+    <button (click)="prijava(totp.value)">Pošalji TOTP</button>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "filmsko-osoblje",
+  "version": "1.0.0",
+  "description": "Web aplikacija za upravljanje filmskim osobljem",
+  "scripts": {
+    "start": "npm run aplikacija",
+    "aplikacija": "node build/aplikacija/server.js",
+    "servis": "node build/servis/server.js",
+    "build": "tsc",
+    "copy-files": "copyfiles -u 1 src/**/*.html src/**/*.css build/",
+    "pripremi": "npm install"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.18.1",
+    "formidable": "^2.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "sqlite3": "^5.1.6",
+    "totp-generator": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.17",
+    "@types/express-session": "^1.18.1",
+    "@types/formidable": "^2.0.5",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/sqlite3": "^3.1.8",
+    "copyfiles": "^2.4.1",
+    "typescript": "^5.0.0"
+  }
+}

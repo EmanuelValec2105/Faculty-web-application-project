@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="controls">
+    <select
+      id="brojPoStranici"
+      [(ngModel)]="brojPoStranici"
+      (change)="resetirajStranicu()"
+    >
+      <option value="5">5</option>
+      <option value="10" selected>10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <div id="grid" class="osobe-grid">
+    @if(osobe.length == 0) {
+    <p>Nema dostupnih osoba</p>
+    }@else {
+    <div
+      *ngFor="let osoba of osobe"
+      class="osoba-kartica"
+      (click)="prikaziDetalje(osoba.tmdb_id)"
+    >
+      <img
+        [src]="
+          osoba.slika != null
+            ? 'https://image.tmdb.org/t/p/w500' + osoba.slika
+            : ''
+        "
+        [alt]="osoba.ime"
+      />
+      <div class="osoba-info">
+        <h3>{{ osoba.ime }}</h3>
+        <p>Poznat/a po: {{ osoba.poznat_po || "-" }}</p>
+        <p>Popularnost: {{ osoba.popularnost.toFixed(2) }}</p>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="pagination">
+    <button
+      [disabled]="trenutnaStranica === 1"
+      (click)="promjeniStranicu(trenutnaStranica - 1)"
+    >
+      &laquo; Predhodna
+    </button>
+
+    <button
+      (click)="promjeniStranicu(trenutnaStranica + 1)"
+      [disabled]="osobe.length == 0"
+    >
+      Sljedeća &raquo;
+    </button>
+  </div>
+</div>

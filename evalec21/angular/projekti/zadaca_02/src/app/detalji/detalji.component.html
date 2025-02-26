@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="osoba-osobe">
+    <!-- Osnovni podaci -->
+    <div class="glavni-podaci">
+      <img
+        id="glavnaSlika"
+        [src]="'https://image.tmdb.org/t/p/w500' + osoba.slika"
+        alt="Slika osobe"
+      />
+      <div class="info">
+        <h2 id="ime">{{ osoba.ime || "Nepoznato ime" }}</h2>
+        <p>
+          <strong>Poznat/a po:</strong>
+          <span id="poznatPo">{{ osoba.poznat_po || "Nepoznato" }}</span>
+        </p>
+        <p>
+          <strong>Popularnost:</strong>
+          <span id="popularnost">{{
+            osoba.popularnost ? osoba.popularnost.toFixed(2) : "Nepoznato"
+          }}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Galerija slika -->
+    <h3>Galerija</h3>
+    <div id="galerija" class="galerija-slika">
+      @if(osoba.galerija && osoba.galerija.length > 0){
+      <img
+        *ngFor="let slika of osoba.galerija"
+        [src]="
+          slika != null
+            ? 'https://image.tmdb.org/t/p/w500' + slika.slika_url
+            : ''
+        "
+        alt="Slika osobe"
+        (click)="prikaziVelikuSliku('https://image.tmdb.org/t/p/w500' + slika)"
+      />
+      }@else{
+      <span>Galerija nije dostupna</span>
+      }
+    </div>
+
+    <!-- Filmovi -->
+    <h3>Filmovi</h3>
+    <div class="filmovi-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Poster</th>
+            <th>Jezik</th>
+            <th>Originalni naslov</th>
+            <th>Naslov</th>
+            <th>Popularnost</th>
+            <th>Datum izdanja</th>
+            <th>Uloga</th>
+          </tr>
+        </thead>
+        <tbody id="filmoviTijelo">
+          @if(osoba.filmovi && osoba.filmovi.length > 0){
+          <tr *ngFor="let film of osoba.filmovi">
+            <td>
+              <img
+                [src]="'https://image.tmdb.org/t/p/w200' + film.poster"
+                alt="Poster filma"
+              />
+            </td>
+            <td>{{ film.jezik || "Nepoznato" }}</td>
+            <td>{{ film.originalni_naslov || "Nepoznato" }}</td>
+            <td
+              (mouseenter)="prikaziOpis(film.opis)"
+              (mouseleave)="sakrijOpis()"
+            >
+              {{ film.naslov || "Nepoznato" }}
+              <div class="hover-opis" *ngIf="prikazaniOpis === film.opis">
+                {{ film.opis || "Opis nije dostupan" }}
+              </div>
+            </td>
+            <td>
+              {{ film.popularnost ? film.popularnost.toFixed(2) : "Nepoznato" }}
+            </td>
+            <td>{{ film.datum_izdanja ? film.datum_izdanja : "Nepoznato" }}</td>
+            <td>{{ film.uloga || "Nepoznato" }}</td>
+          </tr>
+          } @else {
+          <tr>
+            <td colspan="7">Nema dostupnih filmova</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      <button
+        *ngIf="prikaziDodajJos"
+        id="ucitajJos"
+        class="ucitaj-jos"
+        (click)="ucitajJos()"
+      >
+        Učitaj još
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="pretraga">
+    <input
+      type="text"
+      id="pojam"
+      placeholder="Unesite ime osobe..."
+      [(ngModel)]="pojam"
+    />
+    <button (click)="pretraziOsobe()">Traži</button>
+  </div>
+  <div id="rezultati" *ngIf="osobe != null">
+    <div class="osoba-kartica" *ngFor="let osoba of osobe">
+      <div class="osoba-info">
+        <h3>{{ osoba.name }}</h3>
+        <p>Poznat/a po: {{ osoba.known_for_department || "-" }}</p>
+        <button (click)="dodajOsobu(osoba.id)">Dodaj</button>
+        <button (click)="makniOsobu(osoba.id)">Obrisi</button>
+      </div>
+    </div>
+  </div>
+</div>

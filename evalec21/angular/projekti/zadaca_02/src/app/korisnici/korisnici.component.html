@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>Upravljanje korisnicima</h1>
+  <table id="korisniciTablica">
+    <thead>
+      <tr>
+        <th>Korisničko ime</th>
+        <th>Email</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Zatrazio pristupa</th>
+        <th>Status pristupa</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody id="korisniciTijelo">
+      <tr
+        *ngFor="let korisnik of korisnici"
+        [class.poseban]="
+          korisnik.zatrazio_pristup == 1 && korisnik.ima_pristup != 1
+        "
+      >
+        <td>{{ korisnik.korime }}</td>
+        <td>{{ korisnik.email }}</td>
+        <td>{{ korisnik.ime }}</td>
+        <td>{{ korisnik.prezime }}</td>
+        <td>{{ korisnik.zatrazio_pristup == 1 ? "Da" : "Ne" }}</td>
+        <td>{{ korisnik.ima_pristup == 1 ? "Da" : "Ne" }}</td>
+        <td>
+          <button
+            *ngIf="korisnik.zatrazio_pristup == 1 && korisnik.ima_pristup != 1"
+            (click)="promjeniPristup(true, korisnik.korime)"
+          >
+            Daj pristup
+          </button>
+          <button
+            *ngIf="korisnik.ima_pristup == 1"
+            (click)="promjeniPristup(false, korisnik.korime)"
+          >
+            Makni pristup
+          </button>
+          <button (click)="obrisiKorisnika(korisnik.korime)">Obriši</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
