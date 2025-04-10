@@ -22,3 +22,24 @@ The application consists of:
 - Responsive design with SCSS
 
 This project demonstrates my skills in full-stack web development, implementing modern web technologies, and creating secure user authentication systems.
+
+## Setup & Run Instructions
+This setup is written for Linux. Unzip the downloaded folder and access the evalec21 directory. Follow the next steps.
+
+### Backend Setup
+
+First terminal:
+
+- cd server
+- npm run pripremi
+- npm run servis
+
+### Frontend Setup
+
+Second terminal:
+
+- cd angular
+- npm install
+- ng serve
+
+Access to the application is done by entering localhost:12222/ in the browser. User credentials can be found at the bottom of the "Login" page.
