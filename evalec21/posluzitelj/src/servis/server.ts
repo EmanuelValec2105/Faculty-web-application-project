@@ -31,7 +31,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-const port = dajPort("evalec21");
+const port = process.env.PORT || 12222;
 const putanjaKonfiguracije =
   process.argv.length > 2 ? process.argv[2] : "podaci/konfiguracija.csv";
 const konf = ucitajKonfiguraciju(putanjaKonfiguracije);
