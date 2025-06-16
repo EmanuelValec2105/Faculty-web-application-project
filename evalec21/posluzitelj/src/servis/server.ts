@@ -110,7 +110,7 @@ app.post("/servis/app/recaptcha", async (req, res) => {
     const data = await response.json();
     console.log(data);
 
-    if (data.success && data.score > 0.5) {
+    if (data.success) {
       res.status(200).end();
     } else {
       res.status(400).send({ greska: "Roboti nisu dozvoljeni" });
