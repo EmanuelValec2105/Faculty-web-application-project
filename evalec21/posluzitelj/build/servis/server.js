@@ -45,14 +45,7 @@ app.use((0, express_session_1.default)({
     },
 }));
 app.use((0, cors_1.default)({
-    origin: function (origin, povratniPoziv) {
-        if (!origin || origin.startsWith("http://localhost:")) {
-            povratniPoziv(null, true);
-        }
-        else {
-            povratniPoziv(new Error("Nije dozvoljeno zbog CORS"));
-        }
-    },
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true, // Allow credentials (cookies)
